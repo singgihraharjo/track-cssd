@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+  @apply bg-slate-50 text-slate-800 antialiased;
+}
+
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full hover:bg-slate-400 transition-colors;
+}
+
+/* --- Selection Styling --- */
+::selection {
+  @apply bg-emerald-100 text-emerald-900;
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideInUp 0.5s ease-out forwards;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.4s ease-out forwards;
+}
+
+/* Staggered animation delays for lists/grids */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+
+/* --- Utility Components --- */
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-md hover:-translate-y-1;
+}
+
+.input-field {
+  @apply w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all text-sm;
+}
+
+.btn-primary {
+  @apply bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2.5 px-4 rounded-xl shadow-sm hover:shadow transition-all active:scale-95 flex items-center justify-center gap-2;
+}
+
+.btn-secondary {
+  @apply bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 font-medium py-2.5 px-4 rounded-xl transition-all active:scale-95 flex items-center justify-center gap-2;
+}
+
+/* --- Print Styles --- */
+@media print {
+  @page { margin: 0; size: auto; }
+  body { background: white; color: black; }
+  .no-print, aside, header, button:not(#print-area button), .filters-section { display: none !important; }
+  #print-area {
+    display: flex !important;
+    visibility: visible !important;
+    position: absolute;
+    left: 0; top: 0; width: 100%; height: 100%;
+    justify-content: center; align-items: center;
+    background: white; z-index: 9999;
+  }
+}

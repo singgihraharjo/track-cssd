@@ -1,0 +1,7 @@
+{
+  "name": "MediTrack CSSD",
+  "description": "A sterile instrument distribution and tracking system with QR code validation workflow.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
